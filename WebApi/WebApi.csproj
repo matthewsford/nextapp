@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>MatthewFordUs.NextApp.WebApi</AssemblyName>
+    <RootNamespace>MatthewFordUs.NextApp.WebApi</RootNamespace>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
