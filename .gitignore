@@ -1,3 +1,39 @@
+# compiled output
+/Angular/dist
+/Angular/tmp
+/Angular/out-tsc
+
+# IDEs and editors
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/Angular/.sass-cache
+/Angular/connect.lock
+/Angular/coverage
+/Angular/libpeerconnection.log
+npm-debug.log
+testem.log
+/Angular/typings
+
+# e2e
+/Angular/e2e/*.js
+/Angular/e2e/*.map
+
+# System Files
+.DS_Store
+
 
 # Created by https://www.gitignore.io/api/intellij,linux,visualstudio,visualstudiocode,windows
 
