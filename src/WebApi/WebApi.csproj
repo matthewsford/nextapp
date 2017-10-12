@@ -5,18 +5,16 @@
     <AssemblyName>MatthewFordUs.NextApp.WebApi</AssemblyName>
     <RootNamespace>MatthewFordUs.NextApp.WebApi</RootNamespace>
     <StartupObject></StartupObject>
+    <UserSecretsId>0acb1f9c-6649-4e1c-bbb8-eab42a0c1bff</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
   </ItemGroup>
-
 </Project>

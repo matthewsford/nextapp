@@ -2,23 +2,23 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <AssemblyName>MatthewFordUs.NextApp.WebApi.Tests</AssemblyName>
-    <RootNamespace>MatthewFordUs.NextApp.WebApi.Tests</RootNamespace>
+    <AssemblyName>MatthewFordUs.NextApp.WebApi.UnitTests</AssemblyName>
+    <RootNamespace>MatthewFordUs.NextApp.WebApi.UnitTests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="4.19.4" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="Moq" Version="4.7.137" />
-    <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="xunit" Version="2.3.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0" />
   </ItemGroup>
 <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WebApi\WebApi.csproj" />
-  </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="..\..\src\WebApi\WebApi.csproj" />
+</ItemGroup>
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>

@@ -20,9 +20,9 @@ namespace MatthewFordUs.NextApp.WebApi.Controllers {
     [HttpPost]
     public void Post([FromBody] string value) { }
 
-    // PUT api/values/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value) { }
+    // PATCH api/values/5
+    [HttpPatch("{id}")]
+    public void Patch(int id, [FromBody] string value) { }
 
     // DELETE api/values/5
     [HttpDelete("{id}")]

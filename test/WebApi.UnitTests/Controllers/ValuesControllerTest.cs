@@ -2,7 +2,7 @@ using FluentAssertions;
 using MatthewFordUs.NextApp.WebApi.Controllers;
 using Xunit;
 
-namespace MatthewFordUs.NextApp.WebApi.Tests {
+namespace MatthewFordUs.NextApp.WebApi.UnitTests.Controllers {
   public class ValuesControllerTest {
     [Fact]
     public void Get_Should_ReturnBothValues() {
@@ -10,7 +10,7 @@ namespace MatthewFordUs.NextApp.WebApi.Tests {
 
       var result = controller.Get();
 
-      result.Should().BeEquivalentTo(new[] {"value1", "value2"});
+      result.Should().BeEquivalentTo("value1", "value2");
     }
 
     [Fact]
@@ -30,10 +30,10 @@ namespace MatthewFordUs.NextApp.WebApi.Tests {
     }
 
     [Fact]
-    public void Put_Should_Exist() {
+    public void Patch_Should_Exist() {
       var controller = new ValuesController();
 
-      controller.Put(5, "value");
+      controller.Patch(5, "value");
     }
 
     [Fact]
