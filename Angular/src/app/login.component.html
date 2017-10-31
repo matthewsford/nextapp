@@ -1,0 +1,42 @@
+<div>
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <div>
+          <mat-form-field>
+            <input
+              autocomplete="username"
+              matInput formControlName="username" type="text" placeholder="Email">
+            <!--
+            <mat-error *ngIf="emailFormControl.hasError('pattern')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          -->
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input
+              autocomplete="current-password"
+              matInput
+              formControlName="password"
+              type="password"
+              placeholder="Password">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-checkbox formControlName="rememberMe">Remember me?</mat-checkbox>
+        </div>
+        <div>
+          <button mat-button (onclick)="onLogin">Login</button>
+        </div>
+      </form>
+      <p>Form value: {{ form.value | json }}</p>
+      <p>Form status: {{ form.status | json }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

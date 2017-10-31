@@ -1,0 +1,15 @@
+<div class="example-container mat-elevation-z8">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput placeholder="Given Name" formControlName="givenName">
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Surname" formControlName="surname">
+    </mat-form-field>
+    <div>
+      <button mat-button (click)="onBack()">Back to Student List</button>
+      <button mat-button (click)="onSave()">Save</button>
+    </div>
+  </form>
+</div>
