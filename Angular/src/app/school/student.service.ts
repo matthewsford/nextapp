@@ -17,7 +17,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
-import {Student} from './student';
+import {Student} from './state/student';
 import {Observer} from 'rxjs/Observer';
 
 export abstract class DeleteStatus {
@@ -61,7 +61,6 @@ export class StudentService {
    * @param {Student} student
    */
   updateStudent(student: Student): Observable<Student> {
-    console.log('about to put');
     try {
       return this.http.put<Student>(`${this.baseUrl}/students/${student.id}`, student);
     } catch (e) {

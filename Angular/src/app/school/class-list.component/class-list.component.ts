@@ -26,7 +26,7 @@ import 'rxjs/add/observable/fromEvent';
 import {Router} from '@angular/router';
 
 import {StudentService} from '../student.service';
-import {Student} from '../student';
+import {Student} from '../state/student';
 
 @Component({
   selector: 'app-student-list',

@@ -14,21 +14,22 @@
  */
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {StoreRouterConnectingModule, routerReducer, RouterStateSerializer} from '@ngrx/router-store';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatSidenavModule
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule, MatListModule,
+    MatSidenavModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActionReducerMap, StoreModule} from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -38,43 +39,45 @@ import {PageNotFoundComponent} from './page-not-found.component';
 import {LoginComponent} from './login.component';
 import {SessionService} from './session.service';
 import {SchoolModule} from './school';
-import {counterReducer} from './counter';
-
-export const reducers: ActionReducerMap<State> = {
-  layout: fromLayout.reducer,
-  // routerReducer: fromRouter.routerReducer,
-};
+import {reducers, CustomRouterStateSerializer, metaReducers} from './app.reducer';
+import SchoolEffects from './school/state/student.effects';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    PageNotFoundComponent,
-    RegisterComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatSidenavModule,
-    ReactiveFormsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    CoreModule,
-    SchoolModule,
-    AppRoutingModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25
-    })
-  ],
-  providers: [SessionService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        PageNotFoundComponent,
+        RegisterComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatSidenavModule,
+        MatListModule,
+        ReactiveFormsModule,
+        StoreModule.forRoot(reducers, {metaReducers}),
+        EffectsModule.forRoot([SchoolEffects]),
+        CoreModule,
+        SchoolModule,
+        AppRoutingModule,
+        StoreRouterConnectingModule,
+        StoreDevtoolsModule.instrument({
+            maxAge: 25
+        })
+    ],
+    providers: [
+        SessionService,
+        {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

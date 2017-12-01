@@ -20,7 +20,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./sidenav.component.sass']
 })
 export class SidenavComponent {
-  @Input() open = true;
+  @Input() opened = true;
 
   constructor() {
   }

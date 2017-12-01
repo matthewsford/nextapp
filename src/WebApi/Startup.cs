@@ -33,9 +33,9 @@ namespace MatthewFordUs.NextApp.WebApi {
       Configuration = configuration;
     }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services) {
       var configuration = Configuration.Get<MyOptions>();
+      Console.WriteLine($"allowed origin: ${configuration.Origin}");
       services.AddCors(options => {
         options.AddPolicy("AllowSpecificOrigin",
           builder =>
@@ -47,8 +47,10 @@ namespace MatthewFordUs.NextApp.WebApi {
 
       services.AddDbContext<ApplicationDbContext>(options =>
         options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
-      const string connection = @"Server=(localdb)\mssqllocaldb;Database=NextApp.SchoolDb;Trusted_Connection=True;";
-      services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(connection));
+      //const string connection = @"Server=(localdb)\mssqllocaldb;Database=NextApp.SchoolDb;Trusted_Connection=True;";
+      //services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(connection));
+      services.AddDbContext<SchoolDbContext>(options =>
+        options.UseInMemoryDatabase());
 
       services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
           options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
@@ -70,7 +72,7 @@ namespace MatthewFordUs.NextApp.WebApi {
         options.SlidingExpiration = true;
         options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
       });
-      
+
       services.AddMvc();
       services.Configure<MvcOptions>(options => {
         options.Filters.Add(new CorsAuthorizationFilterFactory("AllowSpecificOrigin"));
@@ -82,7 +84,6 @@ namespace MatthewFordUs.NextApp.WebApi {
       });
     }
 
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(
       IApplicationBuilder app,
       IHostingEnvironment env) {

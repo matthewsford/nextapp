@@ -11,11 +11,10 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button mat-button (click)="onEditStudent(row.id)">Edit</button>
-        <button mat-button (click)="onDeleteStudent(row.id)">Delete</button>
       </mat-cell>
     </ng-container>
 
@@ -41,6 +40,14 @@
       <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
     </ng-container>
     -->
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button (click)="onDeleteStudent(row.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

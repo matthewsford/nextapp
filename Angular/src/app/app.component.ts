@@ -13,12 +13,12 @@
  *   limitations under the License.
  */
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
 
-import {State} from './state';
-import {CloseSidenav, OpenSidenav} from './core/layout.actions';
-import {getShowSidenav} from './core/layout.reducer';
 import {Observable} from 'rxjs/Observable';
+import {Store} from '@ngrx/store';
+import {CloseSidenav, OpenSidenav} from './core/core.action';
+import {CoreState, getShowSidenav} from './core/core.reducer';
+import {AppState, selectCoreShowSidenav} from './app.reducer';
 
 @Component({
   selector: 'app-root',
@@ -31,18 +31,18 @@ export class AppComponent implements OnInit {
 
   showSidenav$: Observable<boolean>;
 
-  constructor(private store: Store<State>) {
-    this.showSidenav$ = this.store.select(getShowSidenav);
+  constructor(private store: Store<AppState>) {
+      this.showSidenav$ = this.store.select(selectCoreShowSidenav);
   }
 
   ngOnInit(): void {
   }
 
   closeSidenav() {
-    this.store.dispatch(new CloseSidenav());
+      this.store.dispatch(new CloseSidenav());
   }
 
   openSidenav() {
-    this.store.dispatch(new OpenSidenav());
+      this.store.dispatch(new OpenSidenav());
   }
 }

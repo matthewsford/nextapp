@@ -18,40 +18,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatPaginatorModule,
-  MatSidenavModule,
-  MatSortModule,
-  MatTableModule
-} from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {EffectsModule} from '@ngrx/effects';
-
-import {StudentListComponent} from './student-list.component';
-import {StudentService} from './student.service';
-import {ClassComponent} from './class.component';
-import {ClassListComponent} from './class-list.component';
-import {StudentComponent} from './student.component';
-import {SchoolRoutingModule} from './school-routing.module';
-
-@NgModule({
-  declarations: [
-    ClassComponent,
-    ClassListComponent,
-    StudentComponent,
-    StudentListComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    // EffectsModule.forFeature([AdminEffects]),
-    FormsModule,
-    HttpClientModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -61,13 +27,54 @@ import {SchoolRoutingModule} from './school-routing.module';
     MatPaginatorModule,
     MatSidenavModule,
     MatSortModule,
-    MatTableModule,
-    ReactiveFormsModule,
-    SchoolRoutingModule,
-  ],
-  providers: [
-    StudentService
-  ],
+    MatTableModule
+} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+
+import {StudentListComponent} from './student-list.component';
+import {StudentService} from './student.service';
+import {ClassComponent} from './class.component';
+import {ClassListComponent} from './class-list.component';
+import {StudentComponent} from './student.component';
+import {SchoolRoutingModule} from './school-routing.module';
+import {studentReducer} from './state/student.reducer';
+import StudentEffects from './state/student.effects';
+
+@NgModule({
+    declarations: [
+        ClassComponent,
+        ClassListComponent,
+        StudentComponent,
+        StudentListComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        // EffectsModule.forFeature([AdminEffects]),
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatSidenavModule,
+        MatSortModule,
+        MatTableModule,
+        ReactiveFormsModule,
+        SchoolRoutingModule,
+        EffectsModule.forFeature([
+            StudentEffects
+        ]),
+        StoreModule.forFeature('student', studentReducer),
+    ],
+    providers: [
+        StudentService
+    ],
 })
 export class SchoolModule {
 }

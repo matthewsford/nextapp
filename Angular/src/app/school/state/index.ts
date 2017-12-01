@@ -13,16 +13,7 @@
 **   limitations under the License.
 */
 
-import {Identifiable} from './identifiable';
+import {StudentActions} from './student.actions';
+import {studentReducer} from './student.reducer';
 
-export class Student implements Identifiable {
-  id: string|null = null;
-  givenName = '';
-  surname = '';
-  classes: string[];
-
-  constructor(givenName: string = '', surname: string = '') {
-    this.givenName = givenName;
-    this.surname = surname;
-  }
-}
+export {StudentActions, studentReducer};

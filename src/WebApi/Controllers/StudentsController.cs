@@ -20,8 +20,10 @@ namespace MatthewFordUs.NextApp.WebApi.Controllers {
 
     // GET: api/Students
     [HttpGet]
-    public IEnumerable<Student> GetResources() {
-      return from s in _context.Students where s.SupersededTimestamp == DateTime.MaxValue select s;
+    public IEnumerable<Student> GetResources()
+    {
+      Console.WriteLine($"student count: {_context.Students.Count()}");
+      return from s in _context.Students select s; // where s.SupersededTimestamp == DateTime.MaxValue select s;
     }
 
     // GET: api/students/5
@@ -55,7 +57,7 @@ namespace MatthewFordUs.NextApp.WebApi.Controllers {
         return BadRequest();
       }
 
-      var now = DateTime.Now;
+      var now = DateTime.UtcNow;
       var previousStudent = await (
           from s in _context.Students
           where s.Id == id && s.SupersededTimestamp == DateTime.MaxValue

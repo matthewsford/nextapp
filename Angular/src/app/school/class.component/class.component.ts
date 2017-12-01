@@ -26,7 +26,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/fromEvent';
 
 import {StudentService} from '../student.service';
-import {Student} from '../student';
+import {Student} from '../state/student';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({

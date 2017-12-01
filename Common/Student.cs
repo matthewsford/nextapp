@@ -25,10 +25,15 @@ namespace MatthewFordUs.NextApp.Common {
     [Key]
     public Guid? Id { get; set; }
 
+    [DataMember()]
     public Guid? ETag { get; set; }
+
+    [DataMember()]
     public DateTime EnteredTimestamp { get; set; }
+
+    [DataMember()]
     public DateTime SupersededTimestamp { get; set; }
-    
+
     [DataMember(Name = "givenName")]
     public string GivenName { get; set; }
 
